@@ -1,0 +1,79 @@
+# React Fundamentals 2019-05-23
+
+
+## Objectives
+
+- Review the basics of what React is
+- Ensure understanding of key terms and principles
+- Practice building a simple React application
+
+
+## Key terms
+
+* Virtual DOM
+  - It relates to the Document Object Model
+  - The Document Object Model is a representation of all of the HTML and CSS of your app
+  - We can see the DOM in the Elements tab of the Chrome Developer Tools
+  - But, React updates the DOM for you (automatically)
+
+  - SO... WHAT IS THE VIRTUAL DOM??
+    - The Virtual DOM is a creation within React.
+    - It is a further abstraction of the DOM.
+    - React uses the Virtual DOM to compare it to the actual DOM that is being manipulated by the user
+    - Once there is any difference between the two, it causes a change of state.
+    - In terms of the data structure, the Virtual DOM is a big old JavaScript (JS) Object.
+    - Virtual DOM is a JS object that represents the DOM.
+
+
+  - VIRTUAL DOM SUMMARY:
+    - Related to DOM --- React will update the DOM for you
+    - DOM is an abstraction - a node-structured tree like object that represents the HTML (can be interacted with by programming languages)
+    - Virtual DOM is a JS object that represents the DOM ( can be interacted with by us React Developers)
+
+
+
+
+
+* Component
+  - A component is a React representation of some piece of User Interface (UI). It can be large or small.
+
+  - Class component
+    - It is a component that is written as a JS Class.
+    - It is generally more complex than a functional component.
+    - It can contain state * (it used to be that ONLY class components have state. Not the case anymore)
+    - It can take advantage of the LifeCycle methods
+    - A class component MUST have a `render() method`
+
+  - Functional component
+    - It is simply a JavaScript function (declared using the function keyword or as an arrow function)
+    - could be an arrow function expression (which means, in all likelihood, probably means 'const')
+    - could be a function declaration (starts the line of code with the 'function' keyword)
+    - could be a function expression (starts the line of code with  parentheses or a variable that is assigned the function via a function keyword or an arrow function)
+    - It used to be that it could NOT have 'state' -- * now they can with hooks
+
+
+  - 'Container' vs. 'Presentational' components
+
+    Generally speaking...
+    - 'Container' Components are concerned with modifying the state, so they include state and can use lifecycles, routes, etc.
+    - 'Presentational' Components are concerned with how things look - they take props and show them (usually, these are functional components)
+
+    * These are not hard and fast definitions
+
+
+- JSX
+
+  - It is an abstraction that lets us write html and javascript together.
+  - A new syntax that React has given us to write XML/component/JS code quickly.
+  - <SomeComponent prop={theProp} />
+  <h1>Hello</h1>
+  { // curly brackets indicate code here is executed as JS }
+
+  - React converts this back into JS and html for the DOM behind the scenes
+
+
+## Then, let's...
+1. Choose a domain
+2. Look at some examples
+3. Wireframe
+4. Build out a sample app

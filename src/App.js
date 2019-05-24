@@ -32,9 +32,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <LikedCats cats={cats.slice(0,2)} />
-        <CenterContainer cats={cats.slice(10,13)} />
-        <DislikedCats cats={cats.slice(4,8)} />
+        <LikedCats cats={this.state.cats.filter( cat => cat.status === "liked")} />
+        <CenterContainer cats={this.state.cats.filter( cat => cat.status === "undecided")} />
+        <DislikedCats cats={this.state.cats.filter( cat => cat.status === "disliked")} />
       </div>
     );
   }

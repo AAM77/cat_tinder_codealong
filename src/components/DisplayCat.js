@@ -1,7 +1,7 @@
 import React from 'react';
 import CatCard from './CatCard';
 
-const DisplayCat = ({ cat }) => {
+const DisplayCat = ({ cat, handleLikeClick, handleDislikeClick }) => {
 
   const style = { borderStyle:"solid", borderColor:"blue", borderWidth:"1px"}
   return (

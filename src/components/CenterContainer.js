@@ -9,7 +9,7 @@ class CenterContainer extends Component {
     return(
       <div className="CenterContainer">
         <DisplayCat cat={this.props.cats[0]} />
-        <NextUpCats cats={this.props.cats.slice()} />
+        <NextUpCats cats={this.props.cats.slice(1,4)} />
       </div>
     )
   }

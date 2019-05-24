@@ -7,8 +7,8 @@ const DisplayCat = ({ cat }) => {
   return (
     <div style={style} className="DisplayCat">
       <CatCard cat={cat} />
-      <button>Like</button>
-      <button>Dislike</button>
+      <button onClick={handleLikeClick}>Like</button>
+      <button onClick={handleDislikeClick}>Dislike</button>
     </div>
   )
 }

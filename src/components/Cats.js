@@ -7,7 +7,7 @@ const Cats = ({ cats }) => {
   const catCards = cats.map( cat => <CatCard key={cat.name} cat={cat} />)
 
   return (
-    <div>
+    <div className="Cats">
       { catCards }
     </div>
   );

@@ -8,8 +8,8 @@ const CatCard = ({ cat, handleChangeOfHeart }) => {
   if (cat) {
     returnVal = <div className="CatCard">
                   <img
-                    id={cat ? cat.id : "no-cat"}
-                    key={cat.id} src={cat.image_url}
+                    id={cat.id}
+                    src={cat.image_url}
                     alt={cat.name}
                     onClick={handleChangeOfHeart}
                   />

@@ -7,7 +7,7 @@ const CatCard = ({ cat }) => {
 
   if (cat) {
     returnVal = <div className="CatCard">
-                  <img src={cat.image_url} alt={cat.name} /><br />
+                  <img key={cat.id} src={cat.image_url} alt={cat.name} /><br />
                   <span>{cat.name}</span>
                 </div>
   } else {

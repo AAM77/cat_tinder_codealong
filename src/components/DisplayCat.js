@@ -12,8 +12,8 @@ const DisplayCat = ({ cat, handleClick }) => {
   return (
     <div height="100px" width="100px"style={style} className="DisplayCat">
       <CatCard cat={cat} />
-      <button id={ cat ? cat.id : "no-cat" } value="liked" onClick={handleClick}>Like</button>
-      <button id={ cat ? cat.id : "no-cat" } value="disliked" onClick={handleClick}>Dislike</button>
+      <button id={ cat ? cat.id : "no-cat" } className="like-button" onClick={handleClick}>Like</button>
+      <button id={ cat ? cat.id : "no-cat" } className="dislike-button" onClick={handleClick}>Dislike</button>
     </div>
   )
 }

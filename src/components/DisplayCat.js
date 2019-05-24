@@ -1,7 +1,7 @@
 import React from 'react';
 import CatCard from './CatCard';
 
-const DisplayCat = ({ cat, handleLikeClick, handleDislikeClick }) => {
+const DisplayCat = ({ cat, handleClick }) => {
 
   const style = {
     borderStyle:"solid",
@@ -10,10 +10,10 @@ const DisplayCat = ({ cat, handleLikeClick, handleDislikeClick }) => {
   }
 
   return (
-    <div style={style} className="DisplayCat">
+    <div height="100px" width="100px"style={style} className="DisplayCat">
       <CatCard cat={cat} />
-      <button id={ cat ? cat.id : "no-cat" } onClick={handleLikeClick}>Like</button>
-      <button id={ cat ? cat.id : "no-cat" } onClick={handleDislikeClick}>Dislike</button>
+      <button id={ cat ? cat.id : "no-cat" } value="liked" onClick={handleClick}>Like</button>
+      <button id={ cat ? cat.id : "no-cat" } value="disliked" onClick={handleClick}>Dislike</button>
     </div>
   )
 }

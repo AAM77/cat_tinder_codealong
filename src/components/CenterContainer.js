@@ -3,13 +3,12 @@ import Cats from './Cats';
 import DisplayCat from './DisplayCat';
 import NextUpCats from './NextUpCats';
 
-const CenterContainer = ({ cats, handleLikeClick, handleDislikeClick }) => {
+const CenterContainer = ({ cats, handleClick }) => {
     return(
       <div className="CenterContainer">
         <DisplayCat
           cat={cats[0]}
-          handleLikeClick={handleLikeClick}
-          handleDislikeClick={handleDislikeClick}
+          handleClick={handleClick}
         />
 
         <NextUpCats cats={cats.slice(1,4)} />

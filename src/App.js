@@ -16,8 +16,6 @@ class App extends Component {
     this.state = {
       cats: []
     }
-
-    this.handleDislikeClick = this.handleDislikeClick.bind(this)
   }
 
   // mocking a fetch request
@@ -30,28 +28,11 @@ class App extends Component {
     })
   }
 
-  handleLikeClick = (event) => {
-    const cats = this.state.cats.map( cat => {
-
-      if (cat.id === parseInt(event.target.id)) {
-        const newCat = Object.assign({}, cat);
-        newCat.status = "liked";
-        return newCat;
-      } else {
-        return cat;
-      }
-    })
-
-    this.setState({
-      cats: cats
-    })
-  }
-
-  handleDislikeClick(event) {
+  handleClick = (event) => {
     const cats = this.state.cats.map( cat => {
       if (cat.id === parseInt(event.target.id)) {
         const newCat = Object.assign({}, cat);
-        newCat.status = "disliked";
+        newCat.status = event.target.value;
         return newCat;
       } else {
         return cat;
@@ -70,8 +51,7 @@ class App extends Component {
         <LikedCats cats={this.state.cats.filter( cat => cat.status === "liked")} />
 
         <CenterContainer
-          handleLikeClick={this.handleLikeClick}
-          handleDislikeClick={this.handleDislikeClick}
+          handleClick={this.handleClick}
           cats={this.state.cats.filter( cat => cat.status === "undecided")}
         />
 

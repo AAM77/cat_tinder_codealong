@@ -31,12 +31,15 @@ class App extends Component {
   }
 
   handleLikeClick = (event) => {
-    debugger;
     const cats = this.state.cats.map( cat => {
-      if (cat.id === event.target.id) {
-        cat.status = "liked"
+
+      if (cat.id === parseInt(event.target.id)) {
+        const newCat = Object.assign({}, cat);
+        newCat.status = "liked";
+        return newCat;
+      } else {
+        return cat;
       }
-      return cat
     })
 
     this.setState({
@@ -46,10 +49,13 @@ class App extends Component {
 
   handleDislikeClick(event) {
     const cats = this.state.cats.map( cat => {
-      if (cat.id === event.target.id) {
-        cat.status = "disliked"
+      if (cat.id === parseInt(event.target.id)) {
+        const newCat = Object.assign({}, cat);
+        newCat.status = "disliked";
+        return newCat;
+      } else {
+        return cat;
       }
-      return cat
     })
 
     this.setState({

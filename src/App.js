@@ -29,10 +29,22 @@ class App extends Component {
   }
 
   handleClick = (event) => {
+    console.log(event.target)
+
+    let newStatus = () => {
+      if (event.target.className === 'like-button') {
+        return 'liked'
+      } else if (event.target.className === 'dislike-button') {
+        return 'disliked'
+      } else {
+        return 'undecided'
+      }
+    }
+
     const cats = this.state.cats.map( cat => {
       if (cat.id === parseInt(event.target.id)) {
         const newCat = Object.assign({}, cat);
-        newCat.status = event.target.value;
+        newCat.status = newStatus();
         return newCat;
       } else {
         return cat;
@@ -48,14 +60,20 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <LikedCats cats={this.state.cats.filter( cat => cat.status === "liked")} />
+        <LikedCats
+          handleChangeOfHeart={this.handleClick}
+          cats={this.state.cats.filter( cat => cat.status === "liked")}
+        />
 
         <CenterContainer
           handleClick={this.handleClick}
           cats={this.state.cats.filter( cat => cat.status === "undecided")}
         />
 
-        <DislikedCats cats={this.state.cats.filter( cat => cat.status === "disliked")} />
+        <DislikedCats
+          handleChangeOfHeart={this.handleClick}
+          cats={this.state.cats.filter( cat => cat.status === "disliked")}
+        />
       </div>
     );
   }

@@ -30,12 +30,31 @@ class App extends Component {
     })
   }
 
-  handleLikeClick = () => {
-    alert("Liked!")
+  handleLikeClick = (event) => {
+    debugger;
+    const cats = this.state.cats.map( cat => {
+      if (cat.id === event.target.id) {
+        cat.status = "liked"
+      }
+      return cat
+    })
+
+    this.setState({
+      cats: cats
+    })
   }
 
-  handleDislikeClick() {
-    alert("Disliked!")
+  handleDislikeClick(event) {
+    const cats = this.state.cats.map( cat => {
+      if (cat.id === event.target.id) {
+        cat.status = "disliked"
+      }
+      return cat
+    })
+
+    this.setState({
+      cats: cats
+    })
   }
 
 
@@ -49,7 +68,7 @@ class App extends Component {
           handleDislikeClick={this.handleDislikeClick}
           cats={this.state.cats.filter( cat => cat.status === "undecided")}
         />
-        
+
         <DislikedCats cats={this.state.cats.filter( cat => cat.status === "disliked")} />
       </div>
     );

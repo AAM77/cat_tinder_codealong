@@ -6,8 +6,13 @@ import NextUpCats from './NextUpCats';
 const CenterContainer = ({ cats, handleLikeClick, handleDislikeClick }) => {
     return(
       <div className="CenterContainer">
-        <DisplayCat cat={cats[0]} handleLikeClick={handleLikeClick} />
-        <NextUpCats cats={cats.slice(1,4)} handleDislikeClick={handleDislikeClick} />
+        <DisplayCat
+          cat={cats[0]}
+          handleLikeClick={handleLikeClick}
+          handleDislikeClick={handleDislikeClick}
+        />
+
+        <NextUpCats cats={cats.slice(1,4)} />
       </div>
     )
 }

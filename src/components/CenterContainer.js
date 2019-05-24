@@ -1,18 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Cats from './Cats';
 import DisplayCat from './DisplayCat';
 import NextUpCats from './NextUpCats';
 
-class CenterContainer extends Component {
-
-  render() {
+const CenterContainer = ({ cats, handleLikeClick, handleDislikeClick }) => {
     return(
       <div className="CenterContainer">
-        <DisplayCat cat={this.props.cats[0]} />
-        <NextUpCats cats={this.props.cats.slice(1,4)} />
+        <DisplayCat cat={cats[0]} handleLikeClick={handleLikeClick} />
+        <NextUpCats cats={cats.slice(1,4)} handleDislikeClick={handleDislikeClick} />
       </div>
     )
-  }
 }
 
 export default CenterContainer;

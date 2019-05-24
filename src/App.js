@@ -30,8 +30,19 @@ class App extends Component {
     return (
       <div className="App">
         <h1>Welcome to Cat Tinder</h1>
-        { this.state.cats[0] ? <> <DisplayCat cat={this.state.cats[0]} /> <Cats cats={this.state.cats} /> </> : "Gathering the cats together..." }
 
+        {
+          this.state.cats.length > 0
+          ?
+          <>
+            <div className="LikedCats">Liked</div>
+            <DisplayCat cat={this.state.cats[0]} />
+            <Cats cats={this.state.cats} />
+            <div className="DislikeCats">Disliked</div>
+          </>
+          :
+          "Gathering the cats together..."
+        }
 
       </div>
     );

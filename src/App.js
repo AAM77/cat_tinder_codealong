@@ -17,7 +17,7 @@ class App extends Component {
       cats: []
     }
 
-    this.handleDislikeClick = this.handleDislikeClick.bind(this);
+    this.handleDislikeClick = this.handleDislikeClick.bind(this)
   }
 
   // mocking a fetch request
@@ -30,12 +30,12 @@ class App extends Component {
     })
   }
 
-  handleLikeClick = (event) => {
-
+  handleLikeClick = () => {
+    alert("Liked!")
   }
 
-  handleDislikeClick(event) {
-
+  handleDislikeClick() {
+    alert("Disliked!")
   }
 
 
@@ -43,10 +43,13 @@ class App extends Component {
     return (
       <div className="App">
         <LikedCats cats={this.state.cats.filter( cat => cat.status === "liked")} />
+
         <CenterContainer
           handleLikeClick={this.handleLikeClick}
           handleDislikeClick={this.handleDislikeClick}
-          cats={this.state.cats.filter( cat => cat.status === "undecided")}  />
+          cats={this.state.cats.filter( cat => cat.status === "undecided")}
+        />
+        
         <DislikedCats cats={this.state.cats.filter( cat => cat.status === "disliked")} />
       </div>
     );

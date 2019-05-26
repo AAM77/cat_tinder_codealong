@@ -4,8 +4,16 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux';
-import { createStore, compose, applyMiddleware } from 'redux';
+
+import {
+  createStore,
+  applyMiddleware,
+  compose,
+  combineReducers
+} from 'redux';
+
 import thunk from 'redux-thunk';
+import cats from './reducers/cats';
 
 
 //The redux libraries are: redux, react-redux, redux-thunk
@@ -15,31 +23,29 @@ import thunk from 'redux-thunk';
 //    - store
 //    - actions (creators)
 
-const cats = [
-  {status: "undecided", image_url: "https://images.pexels.com/photos/104827/cat-pet-animal-domestic-104827.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500", name: "Fluffy"},
-  {status: "undecided", image_url: "https://images.pexels.com/photos/617278/pexels-photo-617278.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500", name: "Peaches"},
-  {status: "liked", image_url: "https://images.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500", name: "Spike"}
-]
 
 export const getCats = {
   type: "GET_CATS",
   cats: cats
 }
 
-// reducer
-const reducer = (state = { cats: [] }, action) => {
-  switch (action.type) {
-    default:
-      return state
-  }
-};
-
-
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
+const reducers = combineReducers(
+  // pass an object containing the list of reducers we want to combine
+  {
+    cats,
+    //reducer1,
+    //reducer2,
+    //reducer3,
+    //... etc.
+  }
+)
+console.log(reducers)
 
 // store
 const store = createStore(
-  reducer,
+  reducers,
   composeEnhancer(applyMiddleware(thunk)),
 );
 

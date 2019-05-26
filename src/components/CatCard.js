@@ -20,7 +20,7 @@ const CatCard = ({ cat, handleChangeOfHeart }) => {
                 </div>
   } else {
     returnVal = <div>
-                  LOADING...
+                  EMPTY OR LOADING...
                 </div>
   }
 

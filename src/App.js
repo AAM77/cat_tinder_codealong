@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import Cats from './components/Cats';
 import DisplayCat from './components/DisplayCat';
-import LikedCats from './components/LikedCats';
-import DislikedCats from './components/DislikedCats';
 import CenterContainer from './components/CenterContainer';
 
 import cats from './cats-data';
@@ -60,7 +58,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <LikedCats
+        <Cats
+          disliked={false}
           handleChangeOfHeart={this.handleClick}
           cats={this.state.cats.filter( cat => cat.status === "liked")}
         />
@@ -70,7 +69,8 @@ class App extends Component {
           cats={this.state.cats.filter( cat => cat.status === "undecided")}
         />
 
-        <DislikedCats
+        <Cats
+          disliked={true}
           handleChangeOfHeart={this.handleClick}
           cats={this.state.cats.filter( cat => cat.status === "disliked")}
         />

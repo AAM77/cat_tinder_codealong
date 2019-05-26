@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Cats from './components/Cats';
 import DisplayCat from './components/DisplayCat';
 import CenterContainer from './components/CenterContainer';
+import { getCats } from './index.js';
+import { connect } from 'react-redux';
 
 import cats from './cats-data';
 import './App.css';
@@ -16,11 +18,16 @@ class App extends Component {
     }
   }
 
-  // mocking a fetch request
+  // fetch request
   componentDidMount() {
-    fetch("http://localhost:3001/cats")
-      .then( response => response.json())
-      .then( cats => this.setState({ cats: cats }))
+    this.props.getCats();
+
+
+    // fetch("http://localhost:3001/cats")
+    //   .then( response => response.json())
+    //   .then( cats => this.setState({ cats: cats }))
+
+
     // fetch("www.mycats.com")
     // .then( response => response.json())
     // ,.then(cats => this.setState({cats: cats}) )
@@ -82,7 +89,13 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getCats: () => dispatch(getCats)
+  }
+}
+
+export default connect(null, mapDispatchToProps) (App);
 
 
 // {

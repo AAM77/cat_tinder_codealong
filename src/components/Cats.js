@@ -3,11 +3,17 @@ import CatCard from './CatCard';
 
 
 
-const Cats = ({ cats }) => {
-  const catCards = cats.map( cat => <CatCard key={cat.id} cat={cat} />)
+const Cats = ({ cats, handleChangeOfHeart, disliked }) => {
+  const catCards = cats.map( cat =>
+    <CatCard
+      handleChangeOfHeart={handleChangeOfHeart}
+      key={cat.id}
+      cat={cat} />)
 
   return (
-    <div className="Cats">
+    <div className={disliked ? "DislikedCats" : "LikedCats"}>
+      <h2>{disliked ? "Disliked Cats" : "Liked Cats"}</h2>
+
       { catCards }
     </div>
   );

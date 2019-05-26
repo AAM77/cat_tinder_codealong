@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import Cats from './components/Cats';
-import DisplayCat from './components/DisplayCat';
 import CenterContainer from './components/CenterContainer';
 import { connect } from 'react-redux';
-
-import cats from './cats-data';
 import './App.css';
 
 
@@ -16,6 +13,12 @@ class App extends Component {
       cats: []
     }
   }
+
+  cats = [
+    {status: "undecided", image_url: "https://images.pexels.com/photos/104827/cat-pet-animal-domestic-104827.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500", name: "Fluffy"},
+    {status: "undecided", image_url: "https://images.pexels.com/photos/617278/pexels-photo-617278.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500", name: "Peaches"},
+    {status: "liked", image_url: "https://images.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500", name: "Spike"}
+  ]
 
   // fetch request
   componentDidMount() {

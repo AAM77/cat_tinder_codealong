@@ -18,12 +18,15 @@ class App extends Component {
 
   // mocking a fetch request
   componentDidMount() {
+    fetch("http://localhost:3001/cats")
+      .then( response => response.json())
+      .then( cats => this.setState({ cats: cats }))
     // fetch("www.mycats.com")
     // .then( response => response.json())
     // ,.then(cats => this.setState({cats: cats}) )
-    this.setState({
-      cats: cats
-    })
+    // this.setState({
+    //   cats: cats
+    // })
   }
 
   handleClick = (event) => {

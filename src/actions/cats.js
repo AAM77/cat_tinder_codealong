@@ -11,9 +11,12 @@
 // that returns an action object with a type (instructions) and payload (the data that we are interacting with)
 
 export const setCats = cats => {
-  return {type: 'SET_CATS', cats: cats}
+  return { type: 'SET_CATS', cats: cats }
 }
 
+export const changeStatus = (cats) => {
+  return { type: 'CHANGE_STATUS', cats: cats }
+}
 
 
 

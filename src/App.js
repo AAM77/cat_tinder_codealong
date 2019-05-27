@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Cats from './components/Cats';
 import CenterContainer from './components/CenterContainer';
 import { connect } from 'react-redux';
+import { getCats } from './actions/cats'
 import './App.css';
 
 
@@ -14,19 +15,17 @@ class App extends Component {
     }
   }
 
-  cats = [
-    {status: "undecided", image_url: "https://images.pexels.com/photos/104827/cat-pet-animal-domestic-104827.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500", name: "Fluffy"},
-    {status: "undecided", image_url: "https://images.pexels.com/photos/617278/pexels-photo-617278.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500", name: "Peaches"},
-    {status: "liked", image_url: "https://images.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500", name: "Spike"}
-  ]
+  // cats = [
+  //   {status: "undecided", image_url: "https://images.pexels.com/photos/104827/cat-pet-animal-domestic-104827.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500", name: "Fluffy"},
+  //   {status: "undecided", image_url: "https://images.pexels.com/photos/617278/pexels-photo-617278.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500", name: "Peaches"},
+  //   {status: "liked", image_url: "https://images.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500", name: "Spike"}
+  // ]
 
   // fetch request
   componentDidMount() {
+    this.props.getCats();
 
 
-    // fetch("http://localhost:3001/cats")
-    //   .then( response => response.json())
-    //   .then( cats => this.setState({ cats: cats }))
 
 
     // fetch("www.mycats.com")
@@ -65,7 +64,6 @@ class App extends Component {
     })
   }
 
-
   render() {
     return (
       <div className="App">
@@ -96,7 +94,7 @@ class App extends Component {
 //   }
 // }
 
-export default App;
+export default connect(null, { getCats }) (App);
 
 
 // {

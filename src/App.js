@@ -8,32 +8,10 @@ import './App.css';
 
 class App extends Component {
 
-  constructor() {
-    super()
-    this.state = {
-      cats: []
-    }
-  }
-
-  // cats = [
-  //   {status: "undecided", image_url: "https://images.pexels.com/photos/104827/cat-pet-animal-domestic-104827.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500", name: "Fluffy"},
-  //   {status: "undecided", image_url: "https://images.pexels.com/photos/617278/pexels-photo-617278.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500", name: "Peaches"},
-  //   {status: "liked", image_url: "https://images.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500", name: "Spike"}
-  // ]
 
   // fetch request
   componentDidMount() {
     this.props.getCats();
-
-
-
-
-    // fetch("www.mycats.com")
-    // .then( response => response.json())
-    // ,.then(cats => this.setState({cats: cats}) )
-    // this.setState({
-    //   cats: cats
-    // })
   }
 
   handleClick = (event) => {
@@ -49,7 +27,7 @@ class App extends Component {
       }
     }
 
-    const cats = this.state.cats.map( cat => {
+    const cats = this.props.cats.map( cat => {
       if (cat.id === parseInt(event.target.id)) {
         const newCat = Object.assign({}, cat);
         newCat.status = newStatus();
@@ -70,42 +48,35 @@ class App extends Component {
         <Cats
           disliked={false}
           handleChangeOfHeart={this.handleClick}
-          cats={this.state.cats.filter( cat => cat.status === "liked")}
+          cats={this.props.cats.filter( cat => cat.status === "liked")}
         />
 
         <CenterContainer
           handleClick={this.handleClick}
-          cats={this.state.cats.filter( cat => cat.status === "undecided")}
+          cats={this.props.cats.filter( cat => cat.status === "undecided")}
         />
 
         <Cats
           disliked={true}
           handleChangeOfHeart={this.handleClick}
-          cats={this.state.cats.filter( cat => cat.status === "disliked")}
+          cats={this.props.cats.filter( cat => cat.status === "disliked")}
         />
       </div>
     );
   }
 }
 
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     getCats: () => dispatch(getCats)
-//   }
-// }
+const mapStateToProps = (state) => {
+  return (
+    {
+      // the state being passed in, (and, thus, the state in state.cats)
+      // is actually the global state that we are getting from redux!
+      cats: state.cats
+    }
+  )
+}
 
-export default connect(null, { getCats }) (App);
-
-
-// {
-//   this.state.cats.length > 0
-//   ?
-//   <>
-//     <div className="LikedCats">Liked</div>
-//     <DisplayCat cat={this.state.cats[0]} />
-//     <Cats cats={this.state.cats} />
-//     <div className="DislikedCats">Disliked</div>
-//   </>
-//   :
-//   "Gathering the cats together..."
-// }
+// here, we're handing getCats to redux.
+// redux sees the getCats as a type of callback function
+// and redux knows how to handle passing dispatch correctly to it
+export default connect(mapStateToProps, { getCats }) (App);

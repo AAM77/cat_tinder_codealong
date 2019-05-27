@@ -1,5 +1,6 @@
 import React from 'react';
 import CatCard from './CatCard';
+import { connect } from 'react-redux';
 
 const DisplayCat = ({ cat, handleClick }) => {
 
@@ -18,4 +19,12 @@ const DisplayCat = ({ cat, handleClick }) => {
   )
 }
 
-export default DisplayCat;
+const mapStateToProps = (state) => {
+  return(
+    {
+      cat: state.cats.filter( cat => cat.status === 'undecided')[0]
+    }
+  )
+}
+
+export default connect(mapStateToProps)(DisplayCat);

@@ -56,7 +56,6 @@ class App extends Component {
 
         <CenterContainer
           handleClick={this.handleClick}
-          cats={this.props.cats.filter( cat => cat.status === "undecided")}
         />
 
         <Cats
@@ -83,3 +82,5 @@ const mapStateToProps = (state) => {
 // redux sees the getCats as a type of callback function
 // and redux knows how to handle passing dispatch correctly to it
 export default connect(mapStateToProps, { getCats, changeStatus }) (App);
+
+//cats={this.props.cats.filter( cat => cat.status === "undecided")}

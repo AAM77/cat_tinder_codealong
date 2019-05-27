@@ -14,6 +14,8 @@ class App extends Component {
     this.props.getCats();
   }
 
+
+  // LET'S TURN THIS INTO AND { ACTION } & eliminate as a method of App
   handleClick = (event) => {
     console.log(event.target)
 

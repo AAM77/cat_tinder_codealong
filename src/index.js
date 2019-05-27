@@ -23,11 +23,11 @@ import cats from './reducers/cats';
 //    - store
 //    - actions (creators)
 
-
-export const getCats = {
-  type: "GET_CATS",
-  cats: cats
-}
+//
+// export const getCats = {
+//   type: "GET_CATS",
+//   cats: cats
+// }
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -48,9 +48,6 @@ const store = createStore(
   reducers,
   composeEnhancer(applyMiddleware(thunk)),
 );
-
-
-
 
 
 ReactDOM.render(

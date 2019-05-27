@@ -7,15 +7,16 @@ const CenterContainer = ({ cats, handleClick }) => {
     return(
       <div className="CenterContainer">
         <DisplayCat
-          cat={cats[0]}
           handleClick={handleClick}
         />
 
-        <NextUpCats cats={cats.slice(1,4)} />
+        <NextUpCats />
 
         <UploadCatForm />
       </div>
     )
 }
 
+
+//
 export default CenterContainer;

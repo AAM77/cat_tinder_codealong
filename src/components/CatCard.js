@@ -1,17 +1,17 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { changeOfHeart } from '../actions/cats';
 
-
-const CatCard = ({ cat, handleChangeOfHeart }) => {
+const CatCard = ({ cat, changeOfHeart }) => {
 
   let returnVal;
 
   if (cat) {
     returnVal = <div className="CatCard">
                   <img
-                    id={cat.id}
                     src={cat.image_url}
                     alt={cat.name}
-                    onClick={handleChangeOfHeart}
+                    onClick={() => changeOfHeart(cat.id)}
                   />
                   <br />
                   <span>{cat.name}</span>
@@ -29,4 +29,4 @@ const CatCard = ({ cat, handleChangeOfHeart }) => {
   )
 }
 
-export default CatCard;
+export default connect(null, { changeOfHeart })(CatCard);

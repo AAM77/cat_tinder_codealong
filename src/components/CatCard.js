@@ -11,7 +11,7 @@ const CatCard = ({ cat, changeOfHeart }) => {
                   <img
                     src={cat.image_url}
                     alt={cat.name}
-                    onClick={() => changeOfHeart(cat.id)}
+                    onClick={() => changeOfHeart(cat)}
                   />
                   <br />
                   <span>{cat.name}</span>

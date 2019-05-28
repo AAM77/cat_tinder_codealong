@@ -45,9 +45,6 @@ export default (state = [], action) => {
 
       return newCatsArr;
 
-    case "CHANGE_STATUS":
-      return action.cats
-
     default:
       return state
   }

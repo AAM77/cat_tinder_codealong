@@ -15,7 +15,7 @@ const DisplayCat = ({ cat, handleClick, likeCat, dislikeCat }) => {
     <div height="100px" width="100px"style={style} className="DisplayCat">
       <CatCard cat={cat} />
       <button className="like-button" onClick={() => likeCat(cat)}>Like</button>
-      <button className="dislike-button" onClick={() => dislikeCat(cat.id)}>Dislike</button>
+      <button className="dislike-button" onClick={() => dislikeCat(cat)}>Dislike</button>
     </div>
   )
 }

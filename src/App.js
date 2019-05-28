@@ -16,51 +16,21 @@ class App extends Component {
 
 
   // LET'S TURN THIS INTO AND { ACTION } & eliminate as a method of App
-  handleClick = (event) => {
-    console.log(event.target)
 
-    let newStatus = () => {
-      if (event.target.className === 'like-button') {
-        return 'liked'
-      } else if (event.target.className === 'dislike-button') {
-        return 'disliked'
-      } else {
-        return 'undecided'
-      }
-    }
-
-    const cats = this.props.cats.map( cat => {
-      if (cat.id === parseInt(event.target.id)) {
-        const newCat = Object.assign({}, cat);
-        newCat.status = newStatus();
-        return newCat;
-      } else {
-        return cat;
-      }
-    })
-
-    this.props.changeStatus(cats);
-    // this.setState({
-    //   cats: cats
-    // })
-  }
 
   render() {
     return (
       <div className="App">
         <Cats
           disliked={false}
-          handleChangeOfHeart={this.handleClick}
           cats={this.props.cats.filter( cat => cat.status === "liked")}
         />
 
         <CenterContainer
-          handleClick={this.handleClick}
         />
 
         <Cats
           disliked={true}
-          handleChangeOfHeart={this.handleClick}
           cats={this.props.cats.filter( cat => cat.status === "disliked")}
         />
       </div>

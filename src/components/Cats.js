@@ -3,10 +3,9 @@ import CatCard from './CatCard';
 
 
 
-const Cats = ({ cats, handleChangeOfHeart, disliked }) => {
+const Cats = ({ cats, disliked }) => {
   const catCards = cats.map( cat =>
     <CatCard
-      handleChangeOfHeart={handleChangeOfHeart}
       key={cat.id}
       cat={cat} />)
 

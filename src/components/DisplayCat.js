@@ -3,7 +3,7 @@ import CatCard from './CatCard';
 import { connect } from 'react-redux';
 import { likeCat, dislikeCat } from '../actions/cats';
 
-const DisplayCat = ({ cat, handleClick, likeCat, dislikeCat }) => {
+const DisplayCat = ({ cat, likeCat, dislikeCat }) => {
 
   const style = {
     borderStyle:"solid",

@@ -1,8 +1,9 @@
 import React from 'react';
 import CatCard from './CatCard';
 import { connect } from 'react-redux';
+import { likeCat, dislikeCat } from '../actions/cats';
 
-const DisplayCat = ({ cat, handleClick }) => {
+const DisplayCat = ({ cat, handleClick, likeCat, dislikeCat }) => {
 
   const style = {
     borderStyle:"solid",
@@ -13,8 +14,8 @@ const DisplayCat = ({ cat, handleClick }) => {
   return (
     <div height="100px" width="100px"style={style} className="DisplayCat">
       <CatCard cat={cat} />
-      <button id={ cat ? cat.id : "no-cat" } className="like-button" onClick={handleClick}>Like</button>
-      <button id={ cat ? cat.id : "no-cat" } className="dislike-button" onClick={handleClick}>Dislike</button>
+      <button className="like-button" onClick={() => likeCat(cat.id)}>Like</button>
+      <button className="dislike-button" onClick={() => dislikeCat(cat.id)}>Dislike</button>
     </div>
   )
 }
@@ -27,4 +28,4 @@ const mapStateToProps = (state) => {
   )
 }
 
-export default connect(mapStateToProps)(DisplayCat);
+export default connect(mapStateToProps, { likeCat, dislikeCat })(DisplayCat);

@@ -35,7 +35,7 @@ export const dislikeCatSuccess = (catId) => {
 
 // &
 
-export const changeOfHeart = (catId) => {
+export const changeOfHeartSuccess = (catId) => {
   return {type: 'CHANGE_HEART', catId: catId}
 }
 
@@ -99,5 +99,20 @@ export const dislikeCat = (cat) => {
     })
       .then( response => response.json())
       .then( cat => dispatch(dislikeCatSuccess(cat.id)))
+  }
+}
+
+export const changeOfHeart = (cat) => {
+  return (dispatch) => {
+    const changedCat = { ...cat, status: 'undecided' }
+    return fetch(`http://localhost:3001/cats/${cat.id}`, {
+      method: 'PATCH',
+      headers: {
+        "Content-type": 'application/json'
+      },
+      body: JSON.stringify({ cat: changedCat })
+    })
+      .then(response => response.json())
+      .then( cat => dispatch(changeOfHeartSuccess(cat.id)))
   }
 }

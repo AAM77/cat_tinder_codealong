@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Cats from './components/Cats';
 import CenterContainer from './components/CenterContainer';
 import { connect } from 'react-redux';
-import { getCats, changeStatus } from './actions/cats'
+import { getCats } from './actions/cats'
 import './App.css';
 
 
@@ -51,6 +51,6 @@ const mapStateToProps = (state) => {
 // here, we're handing getCats to redux.
 // redux sees the getCats as a type of callback function
 // and redux knows how to handle passing dispatch correctly to it
-export default connect(mapStateToProps, { getCats, changeStatus }) (App);
+export default connect(mapStateToProps, { getCats }) (App);
 
 //cats={this.props.cats.filter( cat => cat.status === "undecided")}

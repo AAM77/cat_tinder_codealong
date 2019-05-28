@@ -18,9 +18,9 @@ export const setCats = cats => {
 }
 
 // let's break this action down further into likeCat & dislikeCat actions
-export const changeStatus = (cats) => {
-  return { type: 'CHANGE_STATUS', cats: cats }
-}
+// export const changeStatus = (cats) => {
+//   return { type: 'CHANGE_STATUS', cats: cats }
+// }
 
 // into:
 export const likeCatSuccess = (catId) => {

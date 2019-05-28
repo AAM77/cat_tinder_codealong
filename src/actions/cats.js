@@ -23,7 +23,7 @@ export const changeStatus = (cats) => {
 }
 
 // into:
-export const likeCat = (catId) => {
+export const likeCatSuccess = (catId) => {
   return { type: 'LIKE_CAT', catId: catId}
 }
 
@@ -61,5 +61,28 @@ export const getCats = () => {
     return fetch("http://localhost:3001/cats")
       .then( response => response.json())
       .then( cats => (dispatch(setCats(cats))))
+  }
+}
+
+
+
+// Since all of our changes so far have
+// led only to superficial changes,
+// we need to create another asynchronous action using thunk:
+// this new asynchronous action will persist those changes
+// to the backend.
+
+export const likeCat = cat => {
+  return dispatch => {
+    const likedCat = { ...cat, status: 'liked' }
+    return fetch(`http://localhost:3001/cats/${cat.id}`, {
+      method: 'PATCH',
+      headers: {
+        "Content-type": 'application/json'
+      },
+      body: JSON.stringify({ cat: likedCat })
+    })
+      .then( response => response.json())
+      .then( cat => dispatch(likeCatSuccess(cat.id)))
   }
 }

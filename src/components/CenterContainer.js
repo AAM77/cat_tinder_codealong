@@ -3,15 +3,11 @@ import DisplayCat from './DisplayCat';
 import NextUpCats from './NextUpCats';
 import UploadCatForm from './UploadCatForm';
 
-const CenterContainer = ({ cats, handleClick }) => {
+const CenterContainer = () => {
     return(
       <div className="CenterContainer">
-        <DisplayCat
-          handleClick={handleClick}
-        />
-
+        <DisplayCat/>
         <NextUpCats />
-
         <UploadCatForm />
       </div>
     )

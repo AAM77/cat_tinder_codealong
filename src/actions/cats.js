@@ -1,4 +1,7 @@
-// action creators
+/////////////////////
+// ACTION CREATORS //
+/////////////////////
+
 // an action creator is a function that returns an action
 // for example, an action creator would be:
 // export const setCats = cats => {
@@ -14,13 +17,27 @@ export const setCats = cats => {
   return { type: 'SET_CATS', cats: cats }
 }
 
+// let's break this action down further into likeCat & dislikeCat actions
 export const changeStatus = (cats) => {
   return { type: 'CHANGE_STATUS', cats: cats }
 }
 
+// into:
+export const likeCat = (catId) => {
+  return { type: 'LIKE_CAT', catId: catId}
+}
 
+// &
 
+export const dislikeCat = (catId) => {
+  return {type: 'DISLIKE_CAT', catId: catId}
+}
 
+// &
+
+export const changeOfHeart = (catId) => {
+  return {type: 'CHANGE_HEART', catId: catId}
+}
 
 
 
@@ -35,7 +52,10 @@ export const changeStatus = (cats) => {
 
 // this is where asyn action creators come into play.
 
-// async action creators
+//////////////////////////////////
+// ASYNCHRONOUS ACTION CREATORS //
+//////////////////////////////////
+
 export const getCats = () => {
   return dispatch => {
     return fetch("http://localhost:3001/cats")

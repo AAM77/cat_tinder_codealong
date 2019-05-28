@@ -29,7 +29,7 @@ export const likeCatSuccess = (catId) => {
 
 // &
 
-export const dislikeCat = (catId) => {
+export const dislikeCatSuccess = (catId) => {
   return {type: 'DISLIKE_CAT', catId: catId}
 }
 
@@ -84,5 +84,20 @@ export const likeCat = cat => {
     })
       .then( response => response.json())
       .then( cat => dispatch(likeCatSuccess(cat.id)))
+  }
+}
+
+export const dislikeCat = (cat) => {
+  return (dispatch) => {
+    const dislikedCat = { ...cat, status: 'disliked'}
+    return fetch(`http://localhost:3001/cats/${cat.id}`, {
+      method: 'PATCH',
+      headers: {
+        "Content-type": 'application/json'
+      },
+      body: JSON.stringify({ cat: dislikedCat })
+    })
+      .then( response => response.json())
+      .then( cat => dispatch(dislikeCatSuccess(cat.id)))
   }
 }
